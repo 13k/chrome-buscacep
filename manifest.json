@@ -1,0 +1,12 @@
+{
+  "name": "BuscaCEP",
+  "version": "1.0",
+  "description": "Busca o CEP no site dos Correios",
+  "browser_action": {
+    "default_icon": "correios.png",
+	"popup": "busca_cep.html"
+  },
+  "permissions": [
+    "http://www.buscacep.correios.com.br/"
+  ]
+}
