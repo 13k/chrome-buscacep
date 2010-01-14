@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Bem vindo ao website dos Correios</title>
+		<base href="http://www.correios.com.br">
+		<link rel="stylesheet" href="http://www.correios.com.br/correios.css" type="text/css">
+		<script type="text/javascript">
+			function avisoSRO() {
+				if (document.getElementById('P_COD_UNI').value.length != 13) {
+					alert('Codigos de rastreamento deverao ter 13 caracteres');
+					return;
+				}
+				var codFim = document.getElementById('P_COD_UNI').value.substr(11).toUpperCase() ;
+				//alert('Cod Final ' + codFim);
+				var codIni = document.getElementById('P_COD_UNI').value.substr(0,1).toUpperCase();
+				//alert('cod Inicial ' + codIni);
+
+				codsIni = new Array ('L', 'R', 'C', 'E');
+				codsInter = new Array ('AC','AD','AE','AF','AG','AI','AL','AM','AN','AO','AQ','AR','AS','AT','AU','AW','AX','AZ','BA','BB','BD','BE','BF','BG','BH','BI','BJ','BL','BM','BN','BO','BS','BT','BV','BW','BY','BZ','CA','CC','CD','CF','CG','CH','CI','CK','CL','CM','CN','CO','CR','CS','CU','CV','CX','CY','CZ','DE','DJ','DK','DM','DO','DZ','EC','EE','EG','EH','ER','ES','ET','FI','FJ','FK','FM','FO','FR','GA','GB','GD','GE','GF','GG','GH','GI','GL','GM','GN','GP','GQ','GR','GS','GT','GU','GW','GY','HK','HM','HN','HR','HT','HU','ID','IE','IL','IM','IN','IO','IQ','IR','IS','IT','JE','JM','JO','JP','KE','KG','KH','KI','KM','KN','KP','KR','KW','KY','KZ','LA','LB','LC','LI','LK','LR','LS','LT','LU','LV','LY','MA','MC','MD','ME','MF','MG','MH','MK','ML','MM','MN','MO','MP','MQ','MR','MS','MT','MU','MV','MW','MX','MY','MZ','NA','NC','NE','NF','NG','NI','NL','NO','NP','NR','NZ','OM','PA','PE','NU','PF','PG','PH','PK','PL','PM','PN','PR','PS','PT','PW','PY','QA','RE','RO','RS','RU','RW','SA','SB','SC','SD','SE','SG','SH','SI','SJ','SK','SL','SM','SN','SO','SR','ST','SV','SY','SZ','TA','TC','TD','TF','TG','TH','TJ','TK','TL','TM','TN','TO','TP','TR','TT','TV','TW','TZ','UA','UG','UM','US','UY','UZ','VA','VC','VE','VG','VI','VN','VU','WF','WS','XZ','YE','YT','YU','ZA','ZM','ZW','ZZ');
+
+				document.rastreamentohome.submit();	
+				if((codsIni.toString().indexOf(codIni)!= -1)&&(codsInter.toString().indexOf(codFim)!=-1)) {
+					if(!mostraAviso()){alert('O bloqueador de popUps esta impedindo que um aviso importante seja exibido');}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="FooterServ">
+			<form name="rastreamentohome"  action="http://websro.correios.com.br/sro_bin/txect01$.QueryList?" method="GET" target="_blank">
+				<INPUT TYPE="hidden" NAME="P_LINGUA" VALUE="001"/>
+				<INPUT TYPE="hidden" NAME="P_TIPO" VALUE="001"/>
+				<div id="FooterServTitRastr" align="center" style="margin-top:5px;">
+					<br />
+					<font size="1">Digite abaixo o código de 13 caracteres :</font>
+					<br />
+					<br /><br />
+					<font color="#A0383F" size="1">Ex: SS987654321BR</font><br />
+					<input type="text" id="P_COD_UNI"  name="P_COD_UNI" size="13" maxlength="13" style="height: 17px;">
+					<input type="button" class="botao" value="Buscar" onclick="avisoSRO();">
+					<br /><br />
+					<div align="center"><a href="servicos/rastreamento/rastreamento.cfm">Como rastrear</a> &nbsp;&nbsp;</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
